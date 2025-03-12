@@ -458,8 +458,23 @@ def repeat_booking_analysis(df):
     """Analyze how frequently workers return to the same workplace."""
     print("Analyzing repeat booking patterns...")
     
-    # Filter to completed shifts
-    completed_shifts = df[df['is_verified']].copy()
+    # Filter to claimed shifts (regardless of completion)
+    claimed_shifts = df[df['claimed']].copy()
+    
+    # Create a flag to identify return bookings
+    if len(claimed_shifts) > 0:
+        # Sort by worker, workplace, and claim time
+        claimed_shifts = claimed_shifts.sort_values(['worker_id', 'workplace_id', 'claimed_at'])
+        
+        # For each worker-workplace pair, flag if this is a return booking
+        claimed_shifts['worker_workplace_visit_num'] = claimed_shifts.groupby(['worker_id', 'workplace_id']).cumcount() + 1
+        claimed_shifts['is_return_worker'] = claimed_shifts['worker_workplace_visit_num'] > 1
+    else:
+        claimed_shifts['worker_workplace_visit_num'] = 1
+        claimed_shifts['is_return_worker'] = False
+    
+    # Filter to completed shifts for the main analysis
+    completed_shifts = claimed_shifts[claimed_shifts['is_verified']].copy()
     
     # Count shifts by worker-workplace pair
     repeat_bookings = completed_shifts.groupby(['worker_id', 'workplace_id']).size().reset_index(name='shifts_completed')
@@ -645,7 +660,33 @@ def repeat_booking_analysis(df):
             plt.savefig(PLOT_DIR / 'workplace_negative_experience.png', dpi=300)
             plt.close()
     
-    return truncated_distribution, worker_max, familiarity_metrics
+    # Add critical metrics to familiarity_metrics for use in detailed_analysis
+    if len(claimed_shifts) > 0:
+        # Calculate percentage of workers returning to the same workplace
+        returning_workers_pct = claimed_shifts['is_return_worker'].mean()
+        
+        # Calculate cancellation rates by familiarity
+        familiar_cancel_rate = claimed_shifts[claimed_shifts['is_return_worker']]['canceled'].mean() if len(claimed_shifts[claimed_shifts['is_return_worker']]) > 0 else 0
+        new_cancel_rate = claimed_shifts[~claimed_shifts['is_return_worker']]['canceled'].mean() if len(claimed_shifts[~claimed_shifts['is_return_worker']]) > 0 else 0
+        
+        # Calculate pay premium for unfamiliar workplaces
+        avg_rate_familiar = claimed_shifts[claimed_shifts['is_return_worker']]['rate'].mean() if len(claimed_shifts[claimed_shifts['is_return_worker']]) > 0 else 0
+        avg_rate_unfamiliar = claimed_shifts[~claimed_shifts['is_return_worker']]['rate'].mean() if len(claimed_shifts[~claimed_shifts['is_return_worker']]) > 0 else 0
+        unfamiliar_pay_premium = avg_rate_unfamiliar - avg_rate_familiar if avg_rate_familiar > 0 else 0
+        
+        # Add these metrics as DataFrame attributes
+        familiarity_metrics.attrs['returning_workers_pct'] = returning_workers_pct
+        familiarity_metrics.attrs['familiar_cancel_rate'] = familiar_cancel_rate 
+        familiarity_metrics.attrs['new_cancel_rate'] = new_cancel_rate
+        familiarity_metrics.attrs['unfamiliar_pay_premium'] = unfamiliar_pay_premium
+    
+    # Return everything in a dictionary for easier access
+    return {
+        'booking_distribution': truncated_distribution,
+        'worker_loyalty': worker_max,
+        'familiarity_metrics': familiarity_metrics,
+        'claimed_shifts': claimed_shifts
+    }
 
 
 def shift_deletion_analysis(df):

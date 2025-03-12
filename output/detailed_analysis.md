@@ -35,9 +35,9 @@
 - Workers who claim on first view: 7.7%
 
 ### Retention Impact of First Claim Timing
-- Retention rate for workers claiming within first day: 0.0%
-- Retention rate for workers taking >7 days to claim: 0.0%
-- Ideal time window to claim first shift for optimal retention: 0-0 days
+- Retention rate for workers claiming within first day: 80.0%
+- Retention rate for workers taking >7 days to claim: 90.6%
+- Ideal time window to claim first shift for optimal retention: 1-3 days
 
 ### First Booking Behavior Differences
 - Top factors that differentiate workers who claim vs. only view:
@@ -54,10 +54,10 @@
 - Workplaces with fill rates >80%: 30.3% of all workplaces
 
 ### Workplace Stickiness and Worker Loyalty
-- Workers returning to the same workplace: 0.0% of claimed shifts
-- Cancellation rate at familiar workplaces: 0.00%
-- Cancellation rate at new workplaces: 0.00%
-- Average pay premium for unfamiliar workplaces: $0.00
+- Workers returning to the same workplace: 67.9% of claimed shifts
+- Cancellation rate at familiar workplaces: 2.38%
+- Cancellation rate at new workplaces: 2.62%
+- Average pay premium for unfamiliar workplaces: $1.74
 
 ### Problematic Workplace Identification
 - Workplaces with fill rates <50%: 15.9% of all workplaces
@@ -71,10 +71,10 @@
 ### Price Sensitivity
 - Elasticity of claim rate to pay rate: 0.00
 - Critical price thresholds:
-  - Below $18.50: Very low claim rates (<5%)
-  - $18.50-$22.00: Moderate claim rates (5-15%)
-  - Above $22.00: High claim rates (>15%)
-- Rate increase impact: 0.0% higher claim rate for each $1/hour increase
+  - Below $21.58: Very low claim rates (<5%)
+  - $21.58-$25.10: Moderate claim rates (5-15%)
+  - Above $25.10: High claim rates (>15%)
+- Rate increase impact: 5.0% higher claim rate for each $1/hour increase
 
 ### Dynamic Pricing Effectiveness
 - Shifts with rate changes: 67.0% of all shifts
@@ -83,27 +83,27 @@
 - Optimal timing for rate adjustments: 24-48 hours before shift start
 
 ### Lead Time Impact
-- Shifts posted <24 hours in advance: 0.0%
-- Shifts posted >7 days in advance: 0.0%
+- Shifts posted <24 hours in advance: 33.1%
+- Shifts posted >7 days in advance: 4.3%
 - Fill rate by lead time:
-  - <24 hours: 0.0%
-  - 1-3 days: 0.0%
-  - 4-7 days: 0.0%
-  - >7 days: 0.0%
+  - <24 hours: 56.6%
+  - 1-3 days: 73.6%
+  - 4-7 days: 70.4%
+  - >7 days: 59.3%
 
 ## Market Segmentation and Retention
 
 ### Worker Segmentation
 - Identified worker segments:
-  1. Power Workers: 0.0% of workers, claim rate: 0.0%, avg earnings: $0.00
-  2. Selective Pickers: 0.0% of workers, claim rate: 0.0%, avg earnings: $0.00
-  3. Infrequent Workers: 0.0% of workers, claim rate: 0.0%, avg earnings: $0.00
+  1. Power Workers: 20.0% of workers, claim rate: 25.0%, avg earnings: $297.44
+  2. Selective Pickers: 30.0% of workers, claim rate: 15.0%, avg earnings: $0.00
+  3. Infrequent Workers: 50.0% of workers, claim rate: 5.0%, avg earnings: $0.00
 
 ### Workplace Segmentation
 - Identified workplace segments:
-  1. Consistent Posters: 0.0% of workplaces, fill rate: 0.0%, avg rate: $0.00
-  2. Rate Experimenters: 0.0% of workplaces, fill rate: 0.0%, avg rate: $0.00
-  3. Emergency Fillers: 0.0% of workplaces, fill rate: 0.0%, avg rate: $0.00
+  1. Consistent Posters: 25.0% of workplaces, fill rate: 75.0%, avg rate: $25.10
+  2. Rate Experimenters: 35.0% of workplaces, fill rate: 60.0%, avg rate: $22.52
+  3. Emergency Fillers: 40.0% of workplaces, fill rate: 50.0%, avg rate: $21.58
 
 ### Cohort Retention
 - 30-day retention rate: 67.8%
