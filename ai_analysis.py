@@ -2527,3 +2527,5 @@ Your response should be in markdown format with frameworks for these key decisio
 For each decision framework, provide a clear structure that could be directly applied by managers making these decisions. Include specific metrics, thresholds, and evaluation criteria where possible."""
 
     return prompt
+
+
