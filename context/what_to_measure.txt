@@ -1,0 +1,194 @@
+Worker attributes
+- Acceptance / Claim Rate (how many shift offers did the worker view vs. how many they claimed)
+- Identifying power workers by net earnings
+
+- Do workers tend to pick up shifts more often if they view them in the mornings vs. late at night?
+- Differences in claim behavior by new vs. experienced workers
+
+- fill rate by workplace (of all shifts posted, how many were eventually claimed and worked)
+- worker stickiness point
+
+Worker-Side Metrics
+
+Activation Threshold - Similar to the stickiness point, how many shifts must a worker successfully complete before becoming a regular user? This could be measured by looking at retention after X completed shifts.
+Price Sensitivity Curve - How does booking likelihood change with different rate offers? Is there a "psychological threshold" where acceptance rates jump significantly?
+Time-to-First-Booking - How quickly after viewing offers do new workers make their first booking? Shorter windows likely indicate higher future engagement.
+Shift Type Preference Strength - Do workers who book specific shift types (e.g., NOC shifts) repeatedly show higher retention? This could reveal preference formation.
+Cancellation Behaviors - Is there a "cancellation threshold" where workers who cancel more than X times are unlikely to return to the platform?
+
+Workplace-Side Metrics
+
+Workplace Stickiness Point - How many successful shifts must be filled before a workplace becomes a regular poster?
+Rate Experimentation Window - Do workplaces that adjust rates within the first X postings tend to have better long-term outcomes?
+Deletion Pattern Impact - How do shift deletions affect future worker engagement with that workplace?
+
+Marketplace Dynamics
+
+Network Effect Indicators - Can you measure when the "flywheel" starts turning in specific geographies? Look for acceleration in bookings per worker/workplace.
+Trust-Building Cycle - How many successful transactions between the same worker-workplace pair creates "loyalty"?
+Peak-End Rule Analysis - Do workers who experience their highest pay rate in their last few shifts have higher retention?
+IKEA Effect - Do workers who invest more time browsing before booking have higher completion rates? (The IKEA effect suggests people value things more when they put effort into obtaining them)
+Loss Aversion Signals - Are workers more likely to book shifts after losing out on previously viewed opportunities?
+Choice Paralysis Thresholds - Is there a point where too many shift options actually decreases booking rates?
+Anchoring Effects - Do initial rate offers set expectations that influence future booking decisions?
+Default Bias - Are workers more likely to accept recommended shifts versus ones they discover through browsing?
+Scarcity Effects - Do "almost filled" shifts or "limited time" offers drive quicker booking decisions?
+Social Proof Points - If you have data on how workers are referred, do those who join through referrals reach stickiness faster?
+
+
+Status Quo Premium - Calculate the rate increase required to make workers switch from their established workplace/shift patterns.
+
+Burnout Prediction Indicators - Sequential shift patterns that predict worker churn or extended platform absence.
+
+Vacancy Chain Effects - When a worker cancels, track the ripple effects through replacement workers and their subsequent behavior.
+
+Premium Segmentation Analysis - Do workers naturally segment into cohorts (rate-maximizers, convenience-seekers, schedule-optimizers)?
+
+Temporal Marketplace Equilibrium - How long it takes for new market regions to reach stable price equilibrium after initial rate variance.
+
+Compensating Differentials - Calculate the implicit "price" workers place on non-monetary factors (shift timing, location proximity, workplace quality).
+
+Two-Part Tariff Behavior - Do workers mentally separate the "cost" of committing to the platform from the benefits of individual shifts?
+
+Survival Analysis for Worker Lifetime Value - Use hazard functions to predict worker lifetime and identify critical intervention points.
+Propensity Score Matching - Compare similarly situated workers who made different decisions to isolate causal factors in retention.
+Multi-Armed Bandit Opportunity Cost - Calculate the exploration vs. exploitation tradeoff value for workers trying new workplaces.
+Markov Decision Process Mapping - Model how workers navigate sequential shift decisions and identify key decision branches.
+Bayesian Belief Updating - Track how workers' implicit valuation of workplaces evolves after each interaction.
+Regression Discontinuity Analysis - Look for threshold effects at key price points or duration points that disproportionately affect behavior.
+Market Design Insights
+
+Clearinghouse Efficiency Metrics - Measure how efficiently your marketplace clears compared to theoretical optimal matching.
+Strategic Complementarity Effects - Quantify how workplace participation drives worker participation and vice versa in specific regions.
+Revealed Preference Hierarchies - Use sequential choices to construct preference rankings for individual workers.
+Information Asymmetry Costs - Measure the "tax" that information gaps place on marketplace efficiency.
+Matching Market Thickness Requirements - Identify the minimum activity levels needed for stable clearing in different geographic markets.
+
+How would you actually measure these things?
+
+Practical Measurement Approaches
+1. Activation Threshold
+
+Count successful shifts completed before a worker shows regular engagement (defined as booking at least one shift per week for 4+ consecutive weeks)
+SQL approach: Group workers by number of completed shifts, then calculate retention rates for each group
+
+2. Price Sensitivity Curve
+
+Create rate buckets (e.g., $20-25, $25-30, etc.)
+For each worker, calculate booking percentage at different rate levels
+Plot booking probability against offered rates
+Use regression analysis to find inflection points where behavior changes significantly
+
+3. Time-to-Decision Analysis
+
+Measure time delta between offer_viewed_at and claimed_at
+Create cohorts based on decision speed and track their long-term retention
+
+4. Worker Segmentation
+CopySELECT 
+  worker_id,
+  COUNT(shift_id) as total_views,
+  SUM(CASE WHEN claimed_at IS NOT NULL THEN 1 ELSE 0 END) as bookings,
+  SUM(CASE WHEN is_verified = TRUE THEN 1 ELSE 0 END) as completed_shifts,
+  AVG(rate) as avg_rate_viewed,
+  AVG(CASE WHEN claimed_at IS NOT NULL THEN rate ELSE NULL END) as avg_rate_booked
+FROM shift_offers
+GROUP BY worker_id
+5. Rate Elasticity Calculation
+Copy-- For each worker, calculate booking probability at different rate levels
+WITH rate_brackets AS (
+  SELECT
+    worker_id,
+    FLOOR(rate/5)*5 as rate_bracket,
+    COUNT(*) as offers_seen,
+    SUM(CASE WHEN claimed_at IS NOT NULL THEN 1 ELSE 0 END) as offers_booked
+  FROM shift_offers
+  GROUP BY worker_id, FLOOR(rate/5)*5
+)
+SELECT
+  worker_id,
+  rate_bracket,
+  offers_booked::float / offers_seen as booking_probability
+FROM rate_brackets
+WHERE offers_seen > 5  -- Require minimum sample size
+ORDER BY worker_id, rate_bracket
+6. Cancellation Threshold
+
+Group workers by cancellation rate
+Calculate retention rates for each group to find threshold where retention drops significantly
+
+7. Workplace Stickiness Analysis
+CopySELECT
+  workplace_id,
+  COUNT(DISTINCT shift_id) as shifts_posted,
+  COUNT(DISTINCT worker_id) as workers_engaged,
+  COUNT(DISTINCT CASE WHEN is_verified = TRUE THEN shift_id ELSE NULL END) as shifts_completed
+FROM shift_offers
+GROUP BY workplace_id
+8. Geographic Network Effects
+
+Group data by geographic regions (if available)
+Plot growth rates against marketplace density
+Look for acceleration points in booking rates as function of total market participants
+
+9. Worker Lifetime Value
+Copy-- First, find each worker's platform lifespan
+WITH worker_lifespan AS (
+  SELECT
+    worker_id,
+    MIN(offer_viewed_at) as first_activity,
+    MAX(COALESCE(shift_start_at, offer_viewed_at)) as last_activity,
+    DATE_DIFF('day', MIN(offer_viewed_at), MAX(COALESCE(shift_start_at, offer_viewed_at))) as days_active
+  FROM shift_offers
+  GROUP BY worker_id
+)
+-- Then calculate value metrics
+SELECT
+  w.worker_id,
+  w.days_active,
+  COUNT(CASE WHEN s.is_verified = TRUE THEN s.shift_id ELSE NULL END) as shifts_completed,
+  SUM(CASE WHEN s.is_verified = TRUE THEN s.rate * s.duration ELSE 0 END) as total_earnings,
+  -- Marketplace revenue (assuming you know your take rate)
+  SUM(CASE WHEN s.is_verified = TRUE THEN (s.charge_rate - s.rate) * s.duration ELSE 0 END) as platform_revenue
+FROM worker_lifespan w
+JOIN shift_offers s ON w.worker_id = s.worker_id
+GROUP BY w.worker_id, w.days_active
+10. Decision Fatigue
+Copy-- Assign session IDs to viewing periods (views within 30 min of each other)
+WITH sessions AS (
+  SELECT
+    worker_id,
+    offer_viewed_at,
+    claimed_at,
+    canceled_at,
+    is_verified,
+    -- This assigns sequential numbers within each worker_id partition
+    SUM(CASE WHEN DATEDIFF('minute', LAG(offer_viewed_at) OVER(PARTITION BY worker_id ORDER BY offer_viewed_at), 
+              offer_viewed_at) > 30 THEN 1 ELSE 0 END) 
+              OVER(PARTITION BY worker_id ORDER BY offer_viewed_at) as session_id
+  FROM shift_offers
+)
+-- Calculate booking and completion rates by sequence position within session
+SELECT
+  ROW_NUMBER() OVER(PARTITION BY worker_id, session_id ORDER BY offer_viewed_at) as view_sequence_in_session,
+  COUNT(*) as total_views,
+  SUM(CASE WHEN claimed_at IS NOT NULL THEN 1 ELSE 0 END)::float / COUNT(*) as booking_rate,
+  SUM(CASE WHEN is_verified = TRUE THEN 1 ELSE 0 END)::float / 
+    NULLIF(SUM(CASE WHEN claimed_at IS NOT NULL THEN 1 ELSE 0 END), 0) as completion_rate
+FROM sessions
+GROUP BY view_sequence_in_session
+ORDER BY view_sequence_in_session
+11. Status Quo Premium
+
+Identify repeated workplace-worker pairings
+Compare accepted rates at familiar vs. new workplaces
+Calculate the rate premium required for workers to switch to new workplaces
+
+To actually implement these analyses, I'd recommend:
+
+First perform exploratory analysis to validate data quality
+Build a core set of derived metrics tables (worker profiles, shift outcomes)
+Create visualization dashboards for the most promising metrics
+Run controlled experiments to test hypotheses that emerge from the analysis
+
+Each of these analyses can reveal actionable insights about marketplace behavior that can guide product and pricing decisions.

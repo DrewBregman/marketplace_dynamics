@@ -1,0 +1,76 @@
+# Data files
+*.csv
+*.xlsx
+*.xls
+*.tsv
+*.db
+*.sqlite
+*.sqlite3
+*.json
+*.pickle
+*.pkl
+*.parquet
+*.h5
+*.hdf5
+
+# # Output directories
+# /output/
+# /plots/
+# /tables/
+# /results/
+# /reports/
+
+# API keys and credentials
+openai_api_key.txt
+*_key.txt
+*.env
+.env
+config/api_key.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.vs/
+
+# Logs
+*.log
+logs/
+
+# User-specific files
+*.yml
+!data_dictionary.yml

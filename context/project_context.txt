@@ -1,0 +1,88 @@
+Problems we tackle: shift offers.
+
+Hey there! Thanks for the interest in joining Clipboard Health! We’re a group of scrappy problem solvers who are faced with ambiguous challenges every day. We expect team members to follow their curiosity, relish discomfort and think from first principles. We know we take a different approach to recruiting; you can read more about how we think about it here.
+
+The upshot is, if you enjoy this case then it’s a good sign that you’ll like working with us. 
+
+the case
+
+Pretend like you’ve made it onto the CBH Product team and you’re looking for signal in our marketplace. Below you’ll find a link to a google drive with data from transactions on our marketplace. Along with the data, we’ve provided a glossary that defines the data for you.  
+
+We’d like you to analyze the data however you’re comfortable, but we’d push you to try and share something you find truly interesting in the data. Present your findings to us in the form of a written brief. Nothing is off the table here, we’re eager to see what questions you come up with and how you seek to answer them.
+
+Clipboard health is a two sided marketplace with strong network effects where workers transact with workplaces to book per diem shifts in the future. Workplaces post shifts and workers choose which shifts they’d like to work by booking them. 
+
+The data and glossary are linked here. Download a copy of the data as a csv to manipulate it how you’d like.
+
+
+Glossary 
+When workers shop for shifts to work on our mobile app, they 
+see the location of the shift, the duration of the shift, and the pay 
+rate we’re offering for the shift (along with some other 
+information). We call this group of data a shift offer [see right]. 
+Workers then decide whether or not they’d like to work the shift, 
+and they do so by booking it. Workers can then cancel their 
+booking, or a healthcare facility can determine they no longer 
+have a staffing need and delete the shift. 
+We’ve compiled a list of shift offers for you. Every shift offer in 
+our list was viewed by the worker listed.
+
+Workplaces post shifts onto our app. Every shift they post has a unique shift id. We charge workplaces a flat rate per hour. We pay workers a portion of the charge, and take the rest as revenue. 
+
+Please note that each row in the table represents a shift offer. A single shift, on the other hand, might have many offers going to many different workers. 
+
+When workers view shifts, our backend generates a "shift offer", i.e. a rate we're offering the worker at a specific moment in time. This abstraction means that every row in the data table represents a view, rather than a shift. 
+
+You can think about every row as a view with a specific pay rate we're offering to a specific worker. That offer is either claimed or not claimed. It can then be subsequently canceled, no showed, or worked. 
+
+
+label 
+type 
+definition
+shift_id 
+string 
+Unique identifier for a shift.
+worker_id 
+string 
+Unique identifier for a worker.
+workplace_id 
+string 
+Unique identifier for a workplace.
+shift_start_at 
+isodate 
+Time shift starts (UTC).
+shift_created_at 
+isodate 
+Time shift was posted to the marketplace (UTC).
+offer_viewed_at 
+isodate 
+Time worker viewed the shift offer (UTC).
+rate 
+float 
+Hourly rate offered to worker for the shift.
+charge rate
+float
+Hourly charge per labor hour at a facility
+duration 
+float 
+Duration of shift in hours.
+slot 
+string 
+Timeslot of shift (NOC == overnight).
+claimed_at 
+isodate 
+Time shift was booked by worker (UTC).
+canceled_at 
+isodate 
+Time shift was canceled by worker (UTC).
+deleted_at 
+isodate 
+Time shift was deleted by workplace (UTC).
+is_ncns 
+boolean 
+Worker was a no call no show, i.e. didn’t show up for the shift and did not cancel.
+is_verified 
+boolean 
+Worker worked shift.
+
+

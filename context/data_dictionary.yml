@@ -1,0 +1,60 @@
+shift_id:
+  type: string
+  description: "Unique shift identifier"
+  analysis_notes: "Primary key for shifts"
+worker_id:
+  type: string
+  description: "Unique worker identifier"
+  analysis_notes: "Key for worker-level metrics"
+workplace_id:
+  type: string
+  description: "Unique workplace identifier"
+  analysis_notes: "Key for workplace analysis"
+shift_start_at:
+  type: datetime
+  description: "When shift begins"
+  analysis_notes: "Critical for time-slot analysis"
+shift_created_at:
+  type: datetime
+  description: "When shift posted to marketplace"
+  analysis_notes: "Measure lead time"
+offer_viewed_at:
+  type: datetime
+  description: "When worker saw the offer"
+  analysis_notes: "Starting point for conversion funnel"
+rate:
+  type: float
+  description: "Hourly rate offered to worker"
+  analysis_notes: "Worker compensation"
+charge_rate:
+  type: float
+  description: "Hourly rate charged to facility"
+  analysis_notes: "Revenue source"
+duration:
+  type: float
+  description: "Shift length in hours"
+  analysis_notes: "Affects total compensation"
+slot:
+  type: string
+  description: "Time slot (AM/PM/NOC)"
+  analysis_notes: "Categorizes shift timing"
+claimed_at:
+  type: datetime
+  description: "When worker booked shift"
+  analysis_notes: "Conversion milestone"
+canceled_at:
+  type: datetime
+  description: "When worker canceled booking"
+  analysis_notes: "Negative outcome"
+deleted_at:
+  type: datetime
+  description: "When workplace removed shift"
+  analysis_notes: "Facility cancellation"
+is_ncns:
+  type: boolean
+  description: "No-call, no-show flag"
+  analysis_notes: "Reliability metric"
+is_verified:
+  type: boolean
+  description: "Worker completed shift"
+  analysis_notes: "Success metric"

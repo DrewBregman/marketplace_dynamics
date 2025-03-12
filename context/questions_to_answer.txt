@@ -1,0 +1,74 @@
+- are workers more likely to work at the same workplace or a different one?
+- How does our pricing change based on the amount of views for a shift
+- What role does time to first view play in 1) our margin and 2) take rate
+- How does our margin change the closer we get to shift start?
+- How does our take rate change based on our margin?
+- How does our take rate change based on distance from shift announcement?
+- Do we make more money from day or night shifts?
+- How many workers are recurring?  
+- Do we allow ncns workers to take future shifts?
+- What’s the average pay rate range for a shift?
+- How does margin change based on first-time workers?
+- What is the time between when the offer is viewed and the offer is claimed?
+- How does the probability of a worker acquiring a shift change if the offer is viewed and claimed within the same (hour)?
+- How does time between offer_viewed_at and claimed_at influence if a shift will be cancelled or not?
+- How do the cancellation rates change from day to night?
+- Instead of asking all of these individual questions about how one factor influences show rates and margin, we can run a model to tell us which features are most predictive.
+- A workplace cancelled on me. How is my behavior affected going forward? (what does behavior mean)
+- How is my behavior different when shopping for shifts vs. finding shifts or taking shifts? 
+- A worker has cancelled a shift. How do we alter the shift offer to staff the healthcare facility, and how does that change over time?
+- If a shift goes without coverage, what information can reinform the next similar shift offer to increase probability of coverage?
+- What is the desired behavior of workers? How often do the best workers check shifts? Do they check for shifts consistently or sporadically? 
+- after what period of time when a worker no longer views new shift postings are they highly likely to churn, defined as never viewing job postings again
+- How many new workers only view a shift and never take one, and what % take shifts? what differences in behavior separate new workers who take a shift vs. just view and never take one?
+- How does a worker’s likelihood of viewing or claiming new shifts evolve after their first successful booking?
+- At what point does a worker who used to view shifts stop returning, and what activity patterns (e.g., repeated cancellations, fewer claims) strongly predict eventual churn?
+- How many shift views (and/or days since sign-up) does it typically take for a new worker to claim their first shift? Which subsets of workers claim their first shift more quickly?
+- How often does a shift claim rate and pay rate, separately, change from time it was first posted to the time it was claimed?
+- For all the shifts that have dynamic pricing, how does the pricing change over time?
+- Do workers show a preference for returning to the same workplace vs. exploring new ones? Does familiarity with a workplace reduce no-show rates or cancellations?
+- Do a subset of workers (“power workers”) account for a disproportionate share of claimed shifts? What patterns (like shorter shifts, higher pay, or specific timeslots) do they favor?
+- If we cluster workers based on shift preferences (location, slot, pay range, repeated facility usage), do certain clusters have higher fill rates or lower churn?
+- Which workplaces consistently have unfilled shifts or high cancellation rates? Are these workplaces offering insufficient pay or posting very short-notice shifts?
+- Are there any workplaces that provide negative experineces (meaning after a worker takes the shift, they are more likely to churn after not viewing or taking any more shfits)
+- Where in the funnel are most drop-offs happening? (e.g., 10% never open shift details, 30% open details but don’t claim, etc.)
+- How often do workers view a shift multiple times before claiming it? Does repeated exposure (through re-listing or updated pay rates) boost claims? Do workers who tend to view shifts multiple times before taking them have a higher probability of coming back for more shifts later?
+- Do most claims occur shortly after the shift is first viewed, or is there a significant second wave of claims after the shift is re-offered at a higher rate or closer to start time?
+- Which segments (time slots, shift durations, geographical locations) yield the highest margin (Charge Rate – Pay Rate), and do these segments also have high fill rates?
+- In what scenarios are we leaving money on the table (charge rate significantly higher than worker pay rate, but acceptance still 100%), or losing potential fill (rate set too low with consistently high unfilled shifts)?
+- How does the lag between shift_created_at and shift_start_at affect overall fill rates and worker reliability (no-shows)?
+- For a single shift_id with multiple shift offers to different workers, is there a pattern in who claims it first? (Highest tenure workers, highest rated, etc.)
+- How many views (or days) does it typically take for a new worker to claim their first shift, and does that pattern predict long-term engagement or churn?
+- How sensitive is a worker’s claim decision to changes in the offered rate, especially as the shift start date approaches (e.g., does increasing pay by $1/hour on day-of notice dramatically improve fill rates compared to posting the same shift rate earlier)?
+- To what extent do workers develop loyalty to specific workplaces, and does familiarity (booking multiple shifts at the same facility) correlate with lower no-show or cancellation rates?
+- After a worker who was once active stops viewing or claiming shifts, is there a time threshold beyond which they almost never return? Are there observable “trigger events” (e.g., a canceled or deleted shift, a no-show) that coincide with workers ceasing to engage?
+- Do a small subset of “power workers” (high-volume claimants) drive a disproportionate share of filled shifts, and what unique behavioral patterns do they exhibit (time slots, pay thresholds, shift durations, workplace types)?
+- What combination of factors (worker tenure, workplace type, time slot, pay rate, distance, etc.) most strongly predicts a no-show or last-minute cancellation, and how can we intervene before it happens?
+- Beyond simple correlations, which underlying factors most powerfully influence a worker’s decision to claim (or ignore) a shift? Controlling for confounding variables like pay, distance, time slot, and worker history, which factor(s) truly move the needle the most for each key worker segment?
+- After a new worker’s first successful shift, is there a critical engagement window (e.g., the next 2 weeks or next 3 shift views) where they’re most likely to form a habit or churn if not continuously engaged? How does failing to match them with appealing shifts in that window affect long-term retention?
+- Can we develop a predictive model that flags “high-risk” shifts (likely to remain unfilled or result in a no-show) based on workplace patterns (historical fill rates, pay adequacy, cancellation history), shift details (time slot, duration), and worker engagement data? How can we use these risk scores to drive real-time interventions (rate increases, targeted worker outreach, earlier postings)?
+- Given that the top 20% of workplaces generate 71.35% of all shifts, how does high concentration among a small group of workplaces affect overall margins, and does it pose a risk of revenue loss if any of these major workplaces reduce shift volume or churn?
+- With a claim rate of only 4.91% but a completion rate of 98.30%, is the low claim rate driven by oversupply of offers, misaligned worker preferences, or insufficient pay rates—and how could fine-tuning the matching process or dynamic pricing increase overall fill while preserving high completion?
+- The top 20% of workers fill 100% of claimed shifts. Does this hyper-concentration among “power workers” create an over-reliance risk, and how might diversifying the worker base or re-engaging the bottom 80% impact claim rates, margins, and marketplace resilience?
+- Are workers more likely to work repeatedly at the same workplace or explore different facilities? How does workplace familiarity (e.g., booking multiple shifts at the same facility) correlate with lower no-show or cancellation rates?
+- How many views (or days since sign-up) does it typically take for a new worker to claim their first shift, and does that pattern predict long-term engagement or churn?
+- With a claim rate of only 4.91% but a near-perfect completion rate of 98.30%, is the low claim rate driven by oversupply of offers, misaligned worker preferences, or insufficient pay rates—and how can we adjust the matching process or dynamic pricing without compromising high completion?
+- Which combination of factors (worker tenure, workplace type, time slot, pay rate, distance, etc.) most strongly predicts a no-show or last-minute cancellation, and how can we intervene (e.g., confirmation prompts, pay boosts, reassignments) to reduce those risks?
+- With the top 20% of workers filling 100% of claimed shifts, does this concentration create a critical over-reliance risk? How might diversifying the worker base or re-engaging the bottom 80% affect fill rates and long-term marketplace stability?
+- Given that the top 20% of workplaces generate 71.35% of all shifts, how does this concentration shape overall margins, and is there a revenue risk if any major workplace reduces volume or defects to a competitor?
+-At which exact shift milestones (e.g., 1st, 3rd, 5th shift) do workers show the highest churn, and how does that correlate with factors like net pay, shift timing, and workplace reliability?
+-Which workplaces systematically overpost or frequently delete shifts, and how does this behavior impact fill rates, worker trust, and long-term workplace-worker relationships?
+Onboarding Speed vs. Retention
+-What is the average time from worker registration to first successful shift booking, and how does a faster (or slower) time-to-first-claim predict longer-term engagement or churn?
+-At which hourly pay thresholds do we see disproportionately large jumps—or drops—in claim rates, and how can we leverage these inflection points to optimize pricing strategies?
+-How do fill rates, claim speeds, and cancellations differ for shifts posted same-day vs. 1 day in advance vs. multiple days in advance, and does lead time alter worker satisfaction or willingness to re-book?
+-Which workers consistently claim specific shift types (e.g., overnight, weekend) and how do their no-show/cancellation rates, earnings, and retention compare to more generalist workers?
+-How many workplaces adjust pay over the life of a posted shift, and do these dynamic-pricing workplaces experience meaningfully higher fill rates or worker loyalty than those with static rates?
+-After a negative event (like a last-minute shift deletion), which factors—pay rate, workplace reputation, distance, etc.—most strongly motivate workers to give that same workplace another chance?
+-Does viewing many open shift offers in one session reduce the probability that a worker claims any shift (“choice overload”), and if so, what is the optimal range of offers to display?
+-Can we cluster workplaces by posting patterns (early vs. last-minute, consistent rates vs. frequent adjustments), and do these clusters correlate with distinct fill-rate outcomes or worker preferences?
+-Are there scenarios where workers cancel or drop only part of a shift (arrive late, leave early), and if so, how do these partial cancellations affect worker reliability and platform earnings?
+-How does the distance between a worker’s location and the workplace correlate with claim decisions, and at what pay differential do workers become willing to travel farther?
+-Do workers who frequently pick up high-demand shifts (e.g., overnight, weekends) show a steeper decline in reliability or a faster path to burnout, and what interventions can mitigate this?
+-What events—like completing a first high-paying shift or receiving a reliability badge—most effectively increase a worker’s lifetime value, and which milestones have the greatest predictive power for retention?
+-Which notification channels or timing strategies yield the highest immediate claim conversions, and does increasing the frequency of alerts risk diminishing returns or notification fatigue?
