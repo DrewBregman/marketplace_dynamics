@@ -6,6 +6,7 @@ Main execution script for Clipboard Health marketplace analysis
 """
 
 import os
+import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
@@ -32,6 +33,7 @@ def main():
     
     # Load data
     df, data_dict = load_data()
+    
     
     # Worker metrics
     worker_stats = worker_metrics(df)
@@ -74,7 +76,14 @@ def main():
     
     # Repeat booking analysis
     # Addresses questions about worker loyalty, workplace familiarity, and workplace churn
-    repeat_bookings = repeat_booking_analysis(df)
+    repeat_booking_results = repeat_booking_analysis(df)
+    
+    # Extract the familiarity metrics which is what we need for the analysis
+    if repeat_booking_results is not None:
+        booking_dist, worker_loyalty, familiarity_metrics = repeat_booking_results
+        repeat_bookings = familiarity_metrics
+    else:
+        repeat_bookings = None
     
     # Lead time analysis
     # Addresses questions about shift posting timing and fill rate impacts

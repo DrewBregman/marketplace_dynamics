@@ -1,122 +1,143 @@
 ## 1. Research Priorities
 
-1. **Quantifying Non-Wage Drivers of Shift Appeal**  
-   • **Gap**: While compensation plays a role, many workers prioritize facility conditions, scheduling convenience, and reputation. We lack a structured, quantitative measure of these non-wage attributes.  
-   • **Rationale**: Understanding how facility reputation and shift desirability factors stack up against wages will help in prioritizing improvement efforts and reducing reliance on pay inflation.  
-   • **Benefit**: Pinpointing which specific non-wage factors matter most (e.g., manager communication, parking availability, cancellation rates) can guide tailored facility-level interventions.
+### Top 3–5 Knowledge Gaps Worth Addressing
 
-2. **Optimal Timing and Magnitude of Pay Adjustments**  
-   • **Gap**: We know that one larger, well-timed increase can outperform multiple small increments—but we do not know the precise “trigger thresholds” for different shift types and worker segments.  
-   • **Rationale**: Identifying threshold points for wage elasticity can inform more accurate initial offers, thereby reducing repeated adjustments and improving fill velocity.  
-   • **Benefit**: This directly addresses Patterns B and C, potentially driving down overall costs and reinforcing worker trust through transparent, decisive offers.
+1. **Offer Overshoot vs. True Supply-Demand Equilibrium**  
+   - **Gap**: We do not yet fully understand how the practice of sending multiple offers per shift distorts measures of fill rates, worker churn, and price sensitivity.  
+   - **Rationale**: Precisely quantifying this gap is critical to understanding whether we are truly oversupplying offers or whether certain shift types genuinely experience worker shortages.  
+   - **Value of Research**: Clarifying how often, how quickly, and at what rate shifts are being over-posted will illuminate true supply-demand balances, enabling more accurate predictions.
 
-3. **Facility Reputation Dynamics and Recovery**  
-   • **Gap**: We know facilities with poor reputations pay more and fill slower, but it’s unclear how long it takes to repair reputational damage (e.g., after improved management or reduced cancellations).  
-   • **Rationale**: Measuring how quickly worker sentiment shifts when conditions improve can help tailor interventions and messaging to speed up facility “recovery.”  
-   • **Benefit**: Could offer a roadmap for struggling facilities to regain trust, thus stabilizing their staffing costs.
+2. **Burnout Thresholds for High-Volume Regulars**  
+   - **Gap**: Current analyses point to potential worker burnout driving last-minute cancellations and churn, but we lack deeper psychological or workload-related benchmarks for “burnout.”  
+   - **Rationale**: High-Volume Regulars are key to stable coverage. Understanding their capacity limits can inform scheduling, incentive structures, and retention strategies.  
+   - **Value of Research**: Pinpointing the causes and early warning signs of burnout can help maintain consistent coverage and stave off churn that undermines fill rates.
 
-4. **Segment Transition Drivers and Retention**  
-   • **Gap**: High-volume (Segment A) workers occasionally “burn out” and shift to lower engagement levels. We need deeper insight into why and how to reinvigorate them.  
-   • **Rationale**: Segment A represents a high proportion of claims and marketplace liquidity. Minimizing churn or temporary drop-offs maintains stable coverage.  
-   • **Benefit**: Sustained engagement of top contributors reduces last-minute bidding wars and ensures consistent availability for more routine shifts.
+3. **Rate Escalation Drivers and Feedback Loops**  
+   - **Gap**: The interplay between late postings, selective acceptance, and rate creep needs further examination to confirm precise triggers for sudden pay hikes.  
+   - **Rationale**: Identifying the specific time thresholds (e.g., 12 or 24-hour mark) and communication patterns that start driving pay upward can help prevent runaway compensation costs.  
+   - **Value of Research**: With clear data, we can enact targeted measures to avoid perpetual rate inflation while still maintaining adequate fill rates.
 
-5. **Spillover Mechanics During Peak Demand**  
-   • **Gap**: While we see Segment B or dormant workers step up during flu season or emergencies, we lack a clear model of how pay, shift length, or other perks drive these activations.  
-   • **Rationale**: Improving seasonal forecasting and understanding triggers that reactivate dormant supply can significantly reduce crisis-driven shortages.  
-   • **Benefit**: Enables planned “surge staffing” strategies that are cost-effective and timely, rather than reactive, high-pay scrambling.
+4. **Growth and Retention of Occasional Workers**  
+   - **Gap**: We see that many Occasional Workers can be “nurtured” into High-Volume participants, but we do not fully understand the conditions (e.g., facility matching, shift consistency) that cause this conversion.  
+   - **Rationale**: Converting Occasional Workers into more reliable, repeat participants grows the marketplace’s capacity to handle surges.  
+   - **Value of Research**: Detailed understanding of the conversion triggers can guide structured onboarding and retention strategies.
 
----
+5. **Cancellation Clusters and Their Predictive Value**  
+   - **Gap**: While we have identified certain time windows with high cancellation rates, we need to understand the root causes—are workers double-booking, underestimating travel time, or responding to better-paying offers elsewhere?  
+   - **Rationale**: Facilitating greater reliability requires tackling last-minute cancellations at their source.  
+   - **Value of Research**: Pinpointing what precipitates these cancellations will enable more precise interventions (time-based or user-based) to minimize churn.
 
 ## 2. Data Collection Plan
 
-1. **Expanded Facility Attribute Scores**  
-   • **Data Points**: Worker rating of facility environment, manager responsiveness, shift organization, and cancellation history (beyond raw counts).  
-   • **Collection Methods**: Post-shift surveys or quick rating prompts; tracking reasons behind cancellations (facility-driven vs. worker-driven).  
-   • **Complement to Existing Analysis**: Creates a more detailed “reputation profile,” allowing us to correlate fill rates with each sub-attribute.
+### Additional Data Points
 
-2. **Shift Posting and Update Log**  
-   • **Data Points**: Timestamps and details of every shift posting, including any subsequent changes to pay rate or shift parameters.  
-   • **Collection Methods**: Automated event logging within the platform whenever a facility modifies shift details.  
-   • **Complement to Existing Analysis**: Supports investigating how timing and magnitude of adjustments affect fill velocity and final compensation (Patterns B and C).
+1. **Offer-Level Response and Timing**  
+   - **What to Collect**: Timestamped records indicating how many distinct workers actually received, viewed, and responded to each shift offer.  
+   - **Why**: Will clarify whether shifts remain unfilled due to truly insufficient workers or because too many workers are “standing by” until rates rise.
 
-3. **Worker Interaction Traces**  
-   • **Data Points**: Login frequency, shift browsing time, reason for rejecting or not claiming a shift (if voluntarily shared), skill or specialty tags.  
-   • **Collection Methods**: Application usage logging coupled with optional exit surveys or “why did you pass” quick forms.  
-   • **Complement to Existing Analysis**: Refines segment definitions (A vs. B) and helps detect early signals of worker disengagement or shifting preferences.
+2. **Worker Engagement Metrics**  
+   - **What to Collect**: Detailed shift acceptance patterns, login times, application usage durations, and user-initiated cancellations.  
+   - **Why**: Identifies early warning signs of worker overload or burnout (e.g., big spikes in acceptance volume followed by cancellations).
 
-4. **Seasonal Engagement and Re-Engagement Triggers**  
-   • **Data Points**: Worker reactivation rates correlated with specific incentives (e.g., surge pay, personal outreach messages, crisis or holiday situations).  
-   • **Collection Methods**: Targeted push notifications or email campaigns with trackable links to see who reactivates.  
-   • **Complement to Existing Analysis**: Builds a predictive model for dormant-to-active transitions, helping forecast workforce capacity during peak or crisis periods.
+3. **Shift Lead Time Metrics**  
+   - **What to Collect**: Time between posting and shift start, plus time of day and day of week the posting occurs.  
+   - **Why**: Helps isolate patterns that cause more frequent rate escalations and clarify how lead time interacts with fill success.
 
-5. **Worker-Reported “Facility Improvement” Data**  
-   • **Data Points**: For facilities undergoing improvements (e.g., new management, better scheduling practices), worker feedback on noticed changes.  
-   • **Collection Methods**: Follow-up surveys after a first shift at the “improved” facility.  
-   • **Complement to Existing Analysis**: Evaluates how quickly reputation can rebound when changes are made, validating or refuting the “spiral” theory around cancellations and negative experiences.
+4. **Feedback and Satisfaction Data**  
+   - **What to Collect**: Worker surveys or facility-level satisfaction ratings, including reasons for cancellations and preferences for shift types.  
+   - **Why**: Can reveal qualitative drivers behind churn and acceptance decisions, complementing the quantitative churn analyses.
 
----
+### Methods for Collecting New Data
+
+- **Platform Event Logging**: Enhance logging to capture detailed in-app user activity (view, accept, reject, cancel) with timestamps.  
+- **Targeted Surveys**: Periodic micro-surveys for workers and facility managers to gather context for acceptance decisions, cancellations, and job satisfaction.  
+- **Longitudinal Tracking**: Extend data retention windows to observe transitions from Occasional Worker to High-Volume status.
+
+### How It Complements Existing Analysis
+
+- **Offer Overshoot Context**: New logs of how many offers are actually opened/acted upon will clarify actual acceptance rate per shift.  
+- **Burnout Indicators**: Engagement data over time, coupled with surveys, can link worker sentiment to churn.  
+- **Rate Fluctuation Insights**: Detailed lead-time data will refine the “trigger points” for compensation changes.
 
 ## 3. Validation Approaches
 
-1. **Multivariate Regression and Elasticity Modeling**  
-   • **Purpose**: Isolate the effect of wage vs. non-wage variables (facility rating, shift timing) on fill velocity.  
-   • **Technique**: Use a mixed-effects model controlling for facility ID as a random effect, capturing repeated measures over time.  
-   • **Causality vs. Correlation**: Sequential modeling can be employed—examining fill velocity changes immediately following a wage bump or facility improvement—to strengthen causal inferences.
+### Methodologies to Validate Key Insights
 
-2. **Difference-in-Differences (DiD) Analysis**  
-   • **Purpose**: Evaluate facility reputation recovery after interventions (e.g., new scheduling policy).  
-   • **Technique**: Compare “treated” facilities (implementing an improvement) against a control group of similar facilities that did not. Track fill rates and cost trends over matching time horizons.  
-   • **Causality vs. Correlation**: By establishing comparable baselines and parallel trends, DiD helps attribute changes in staffing metrics to the specific intervention.
+1. **Segmentation Analysis Upgrade**  
+   - **Approach**: Employ clustering methods (k-means, hierarchical) to see if worker segments derived from new data (offer responses, usage) match our existing categories (High-Volume, Selective, Occasional).  
+   - **Objective**: Validate or refine the current segmentation and confirm if newly captured data supports or contradicts observed user behavior patterns.
 
-3. **Segmentation Stability Check**  
-   • **Purpose**: Confirm the existence and behavior of worker segments (A vs. B), especially transitions.  
-   • **Technique**: Cluster analysis on shift-claiming frequency, wage sensitivity, and times claimed. Track individuals over time to detect movement from high-volume to selective status.  
-   • **Causality vs. Correlation**: Observing changes in claim patterns following external stressors (e.g., personal schedule changes, platform policy updates) can suggest causal reasons for segment switching.
+2. **Time-Series Modeling of Rate Changes**  
+   - **Approach**: Use ARIMA or SARIMAX models to track compensation rates over time, factoring in lead time, day of week, and shift characteristics.  
+   - **Objective**: Determine if rate increases are correlated with certain late-posting intervals or emergent supply shortages, isolating cause-effect relationships where possible.
 
-4. **Early Click-to-Claim Indicators**  
-   • **Purpose**: Validate whether the first 2-3 hours of posting predict final fill outcomes and total cost.  
-   • **Technique**: Construct a predictive model with “initial click-to-claim ratio” as a leading variable, controlling for shift type, location, and time of day. Compare model performance vs. baseline.  
-   • **Causality vs. Correlation**: If strong early metrics consistently forecast final results, it increases confidence that real-time interventions (e.g., immediate pay revision) could be effective.
+3. **Cohort Studies for Worker Burnout**  
+   - **Approach**: Track cohorts of High-Volume Regulars across multiple months to see when (and why) acceptance rates drop or cancellations rise.  
+   - **Objective**: Identify precise thresholds (number of consecutive shifts, maximum hours worked) that correlate with increased churn.
 
----
+### Determining Causality vs. Correlation
+
+- **Instrumental Variables or Quasi-Experiments**: Leverage natural experiments (e.g., facility closures, policy changes) as “shock” events to see how workers respond when external conditions shift suddenly.  
+- **Propensity Score Matching**: Compare workers or facilities with similar profiles (e.g., shift type, pay rate) but different posting times/rate escalation policies to isolate the effect of timing or pay strategies.
 
 ## 4. Limited Experiments
 
-1. **Single vs. Multiple Pay Bumps**  
-   • **Hypothesis**: One-time, larger pay increases (20%+) at the initial posting outperform incremental 5% increases repeated over time.  
-   • **Design**: Randomly select a set of upcoming shifts at representative facilities. Half post an upfront, more substantial wage increase; the other half rely on multiple small increments.  
-   • **Measurements**: Time to first claim, total cost, final wages paid, worker feedback.  
-   • **Interpretation**: Shorter fill times and lower total cost in the “one-time bump” group would confirm Pattern B and C. If no difference emerges, it suggests a simpler re-pricing approach might suffice.
+(Note: This section constitutes no more than one-third of the response.)
 
-2. **Facility Improvement Disclosure**  
-   • **Hypothesis**: Publicizing specific changes (e.g., new scheduling manager) can accelerate reputation recovery and fill rates.  
-   • **Design**: For facilities with a history of poor ratings that have implemented improvements, label shifts in the app (“Under New Management”) vs. no label in a control group.  
-   • **Measurements**: Shift claim speed, wage levels needed, worker satisfaction post-shift.  
-   • **Interpretation**: If labeled shifts see fewer pay revisions and faster fill, it suggests direct communication of improvements helps rebuild trust.
+1. **Controlled Rate Escalation Timing**  
+   - **Hypothesis**: Limiting pay increases to a predefined schedule (e.g., incremental upticks every 4 hours a shift remains unfilled) will reduce last-minute volatility without lowering overall fill rates.  
+   - **Experiment Design**:  
+     - Experimental Group: Facility postings follow a structured escalation schedule.  
+     - Control Group: Facility postings operate with existing ad hoc escalation.  
+     - Measurement: Compare fill times, final rates, and cancellation rates between groups over several weeks.  
+   - **Expected Outcomes**:  
+     - If structured increments tame excessive rate creep, the Experimental Group should see a smaller average pay increase per shift and stable fill times.
 
-3. **Targeted Re-Engagement Offers to Dormant Workers**  
-   • **Hypothesis**: Personalized outreach (mentioning facility closeness, relevant specialties) plus moderate pay boost reactivates dormant workers more effectively than a generic broadcast.  
-   • **Design**: Two groups of dormant workers—one receives tailored messages and targeted shift suggestions, the other receives general promotional emails.  
-   • **Measurements**: Re-engagement rate, subsequent shift claims, time from message to claim.  
-   • **Interpretation**: A higher claim rate from the personalized group indicates the power of targeted incentives and communication in expanding supply.
+2. **Targeted Onboarding Pathways for Occasional Workers**  
+   - **Hypothesis**: Tailored messaging and shift recommendations for new or Occasional Workers can accelerate their transition to Semi-Regular status.  
+   - **Experiment Design**:  
+     - Experimental Group: Receive customized notifications highlighting specific facilities, consistent shift types, and progressive incentives.  
+     - Control Group: Receive generic marketplace updates with no personalized suggestions.  
+   - **Measurement**: Track the conversion rate to High-Volume or repeated shift acceptance over two months.  
+   - **Expected Outcomes**:  
+     - If personalized onboarding successfully boosts engagement, the Experimental Group should display a higher ratio of repeated shift acceptance.
 
----
+3. **Cancellation Preemption Alerts**  
+   - **Hypothesis**: Sending proactive notifications to workers at known high-risk cancellation windows (e.g., 24–48 hours before shift) will reduce final cancellations.  
+   - **Experiment Design**:  
+     - Experimental Group: Automatic reminder texts or app alerts prompting workers to confirm or withdraw well in advance.  
+     - Control Group: Standard approach with no mid-window reminders.  
+   - **Measurement**: Compare cancellation rates, especially in the final 24 hours, between the two groups.  
+   - **Expected Outcomes**:  
+     - Fewer last-minute cancellations in the Experimental Group if timely reminders capture potential scheduling conflicts sooner.
 
 ## 5. Counter-Hypothesis Testing
 
-1. **Alternative Explanation for Non-Wage Sensitivity**  
-   • **Possibility**: High fill rates at certain facilities might be due to geographic convenience or worker familiarity, not purely “reputation” or favorable conditions.  
-   • **Method**: Control for commute distance, public transport access, and worker’s prior experience with the facility in the regression analysis.  
-   • **Critical Assumption**: The difference in fill speed is truly about intangible reputation factors; robust location and shift familiarity controls are needed to confirm or refute.
+### Alternative Explanations
 
-2. **Questioning Pay Thresholds**  
-   • **Possibility**: The abrupt elasticity “cliff” could be driven by seasonal scheduling changes or competitor facility closings, not the wage crossing a key threshold.  
-   • **Method**: Compare fill rates before and after the same wage threshold in different seasons or market conditions. Look at competitor facility postings during the same window.  
-   • **Critical Assumption**: Wage thresholds are universal triggers. Testing across varied market conditions helps confirm if the effect is consistent or situational.
+1. **Facility-Specific Patterns vs. Worker Segments**  
+   - **Counter-Hypothesis**: Observed churn or burnout might be driven more by facility-level conditions (e.g., poor management, confusing shift instructions) than by worker volume or staffing segment.  
+   - **Testing**: Cross-check how frequently the same issues occur across multiple facilities for the same worker segment to see if the pattern is truly worker-centered.
 
-3. **Worker Segment Fluidity**  
-   • **Possibility**: The line between Segment A (high-volume) and Segment B (selective) is more porous than assumed; external factors (e.g., personal schedule changes, licensing status) may dominate.  
-   • **Method**: Include life or schedule event data (if available) to see if it correlates with a sudden drop in shift claims, versus platform or facility-level factors.  
-   • **Critical Assumption**: Segmentation is primarily driven by marketplace changes. If personal events overshadow marketplace drivers, the entire strategy to retain Segment A might need rethinking.
+2. **External Market Forces**  
+   - **Counter-Hypothesis**: Broader economic conditions (e.g., a competing local marketplace, general nursing shortages) drive the rate creep and worker selectivity, rather than platform mechanics.  
+   - **Testing**: Compare fill rates and pay rates in regions with varying levels of competition or labor availability.
 
-By systematically examining these counter-hypotheses, we ensure that the proposed strategies—such as early decisive wage setting and reputation-focused initiatives—are genuinely addressing root causes rather than coincidental correlations. This comprehensive research plan lays the groundwork for a more data-driven, efficient, and equitable healthcare staffing marketplace.
+3. **Timing Artifacts**  
+   - **Counter-Hypothesis**: Rate escalation observed at nights/weekends might simply reflect typical labor laws, overtime rules, or personal worker scheduling preferences rather than a self-perpetuating loop.  
+   - **Testing**: Control for known factors (overtime pay, holiday rates) to isolate increments in rates due to supply–demand feedback loops from mandated wage differentials.
+
+### Methods to Rule Out or Confirm
+
+- **Multi-Level Modeling**: Incorporate facility-level and regional-level random effects to see if certain phenomena (burnout, churn) remain significant within different contexts.  
+- **Pre–Post Analysis**: Implement small policy or interface changes to see if hypothesized outcomes shift accordingly, confirming or refuting the cause-and-effect relationship.
+
+### Critical Assumptions Requiring Scrutiny
+
+- **Assumption of Worker Homogeneity in Burnout Thresholds**: Different individuals may have vastly different capacity for back-to-back shifts.  
+- **Assumption That Rate Increases Are the Primary Attractor**: Workers might also prioritize location fit, shift length, or facility familiarity equally with pay.  
+- **Assumption That Selective Pickers Always Wait for the Highest Rate**: Some may have personal scheduling constraints that only align with certain times, regardless of rate.
+
+---
+
+By addressing these research and investigation areas—collecting richer data, validating current insights through robust methods, running small controlled experiments, and carefully challenging alternative explanations—we can deepen our understanding of the marketplace’s fundamental dynamics. This foundation prepares us for strategic policy changes and product enhancements that balance labor costs with reliable fill rates, ultimately benefiting both facilities and workers.
